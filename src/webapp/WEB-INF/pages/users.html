@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org" xmlns:c="https://jakarta.ee/xml/ns/jakartaee">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8"/>
     <title>User</title>
@@ -10,21 +10,21 @@
 <div>
     <table>
         <tr>
+            <th>Id</th>
             <th>Name</th>
             <th>Last Name</th>
             <th>Email</th>
             <th>Operations</th>
         </tr>
         <tr th:each="userEmp : ${allUser}">
-
+            <td th:utext="${userEmp.getId()}">...</td>
             <td th:utext="${userEmp.getName()}">...</td>
             <td th:utext="${userEmp.getLastName()}">...</td>
             <td th:utext="${userEmp.getEmail()}">...</td>
             <td>
-                <input type="button" value="Update"
-                       onclick="window.location.href = 'edit'">
-                <input type="button" value="Delete"
-                       onclick="window.location.href = 'delete'">
+               <button type="submit">
+                   <a th:href="@{/edit(id=${userEmp.getId()})}">Update</a>
+               </button>
             </td>
         </tr>
     </table>
