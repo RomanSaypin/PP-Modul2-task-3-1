@@ -26,6 +26,12 @@
                    <a th:href="@{/edit(id=${userEmp.getId()})}">Update</a>
                </button>
             </td>
+            <td>
+                <form th:method="DELETE" th:action="@{/{id}(id=${userEmp.getId()})}" th:object="${user}">
+                    <input type="hidden" name="id" th:value="${userEmp.getId()}">
+                    <button type="submit">Delete</button>
+                </form>
+            </td>
         </tr>
     </table>
     <br>
